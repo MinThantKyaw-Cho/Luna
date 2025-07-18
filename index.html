@@ -12,15 +12,15 @@
 
         yesBtn.addEventListener("click", () => {
           // သီချင်းဖွင့်
-          audio.volume = 0.5;
+          audio.volume = 100;
           audio.play().catch((e) => {
             console.log("Audio play error:", e);
           });
 
           // 3 seconds နောက်မှာ redirect
           setTimeout(() => {
-            window.location.href = "second.html"; // မင်းချိတ်ထားတဲ့ file name
-          }, 3000); // milliseconds = 3 seconds
+            window.location.href = "second_index.html"; // မင်းချိတ်ထားတဲ့ file name
+          }, 5000); // milliseconds = 3 secondsn
         });
       });
     </script>
