@@ -5,32 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I love you</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        const yesBtn = document.querySelector(".yes__btn");
+        const audio = document.getElementById("bg-music-audio");
+
+        yesBtn.addEventListener("click", () => {
+          // သီချင်းဖွင့်
+          audio.volume = 0.5;
+          audio.play().catch((e) => {
+            console.log("Audio play error:", e);
+          });
+
+          // 3 seconds နောက်မှာ redirect
+          setTimeout(() => {
+            window.location.href = "second.html"; // မင်းချိတ်ထားတဲ့ file name
+          }, 3000); // milliseconds = 3 seconds
+        });
+      });
+    </script>
   </head>
   <body>
     <section class="header">
       <div class="header__wrapper">
-        <h3 class="question">Happy Birthday Miss.Thandar Oh**Little Angel**&#129402;<br>
-          I've made something special for you.💐<br>
-          This gift is very precious to me, but it may be something you don't realize.<br>
-          💌I hope you will accept this gift.💌<br>
+        <h3 class="question">
+          Happy Birthday Miss.Thandar Oh**Little Angel**&#129402;<br />
+          I've made something special for you.💐<br />
+          This gift is very precious to me, but it may be something you don't realize.<br />
+          💌I hope you will accept this gift.💌<br />
           Do you want to know that?
         </h3>
+
         <img 
           class="gif" 
           src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGpkbWZ1Njl4ZXJ2YmJnYmE5NnJiMjd5dnZkdW1mOXltbzdwNm43ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ok3mfHbhzFVQWca9Rt/giphy.gif"
         />
+
         <img
           class="frame"
           src="https://static.vecteezy.com/system/resources/previews/018/795/134/original/doodle-love-frame-design-png.png"
           alt=""
         />
-        <div class="btn__wrapper" id="bg-music">
+
+        <div class="btn__wrapper">
           <button class="yes__btn">Yes</button>
           <button class="no__btn">No</button>
-                  
         </div>
-      <audio id="bg-music" loop>
+
+        <!-- သီချင်းအသံဖိုင် -->
+        <audio id="bg-music-audio" loop>
           <source src="https://www.dropbox.com/scl/fi/x8q7hz8gwb35xy2vpt2kb/I-Think-They-Call-This-Love.mp3?rlkey=dclxtz1am2oqs8gl2zvs1htll&raw=1" type="audio/mpeg" />
         </audio>
       </div>
