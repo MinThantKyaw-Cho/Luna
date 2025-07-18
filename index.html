@@ -5,20 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I love you</title>
     <link rel="stylesheet" href="style.css" />
-    <script defer>
-      window.addEventListener('DOMContentLoaded', () => {
-        const yesBtn = document.querySelector('.yes__btn');
-        const audioContainer = document.getElementById('audio-container');
-
-        yesBtn.addEventListener('click', () => {
-          // YouTube autoplay embed with muted off
-          audioContainer.innerHTML = `
-            <iframe width="0" height="0" src="https://www.youtube.com/embed/D631UNvosx0?autoplay=1&loop=1&playlist=D631UNvosx0&controls=0" 
-              frameborder="0" allow="autoplay"></iframe>
-          `;
-        });
-      });
-    </script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <section class="header">
@@ -43,6 +30,7 @@
           <button class="yes__btn">Yes</button>
           <button class="no__btn">No</button>
         </div>
+        <!-- music iframe here -->
         <div id="audio-container"></div>
       </div>
     </section>
