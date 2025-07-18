@@ -23,7 +23,6 @@
       background: #fbe0e7;
       overflow: hidden;
       position: relative;
-      padding: 20px;
     }
 
     section {
@@ -89,16 +88,13 @@
 
     .card {
       position: relative;
-      width: 90vw;
-      max-width: 300px;
+      width: 300px;
       height: 400px;
       background: #fff;
       transform-style: preserve-3d;
       transform: perspective(1000px);
       box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
       transition: 1s;
-      border-radius: 15px;
-      overflow: hidden;
     }
 
     .card:hover {
@@ -114,6 +110,7 @@
       transform-style: preserve-3d;
       background: #000;
       transition: 1s;
+      box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
     }
 
     .card:hover .imgBox {
@@ -128,7 +125,6 @@
       height: 100%;
       object-fit: cover;
       backface-visibility: hidden;
-      border-radius: 15px;
     }
 
     .imgBox img:nth-child(2) {
@@ -147,7 +143,6 @@
       align-items: center;
       background-color: #e9cdd0;
       backface-visibility: hidden;
-      border-radius: 15px;
     }
 
     .details .content {
@@ -165,12 +160,9 @@
     }
 
     @media screen and (max-width: 768px) {
-      .card:hover {
-        transform: none;
-      }
-
-      .card:hover .imgBox {
-        transform: none;
+      .card {
+        width: 90vw;
+        height: 60vh;
       }
 
       .details .content h4 {
@@ -210,12 +202,6 @@
     </div>
   </div>
 
-  <!-- Music autoplay (loop) -->
-  <audio autoplay loop>
-    <source src="https://dl.dropboxusercontent.com/scl/fi/k5y1jhxu3gxqx2w4j86c5/I-Think-They-Call-This-Love.mp3?rlkey=3zdz2ozocmbx9z53m8eqpkpgr&st=7dznzjpr&dl=0" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
   <script>
     const colors = ['#C51943', '#FBD1C3', '#F5B0C5', '#E38097'];
 
@@ -237,4 +223,4 @@
     setInterval(createSquare, 150);
   </script>
 </body>
-</html>
+</html> 
