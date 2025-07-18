@@ -5,19 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I love you</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script defer>
+      window.addEventListener('DOMContentLoaded', () => {
+        const yesBtn = document.querySelector('.yes__btn');
+        const audioContainer = document.getElementById('audio-container');
+
+        yesBtn.addEventListener('click', () => {
+          // YouTube autoplay embed with muted off
+          audioContainer.innerHTML = `
+            <iframe width="0" height="0" src="https://www.youtube.com/embed/D631UNvosx0?autoplay=1&loop=1&playlist=D631UNvosx0&controls=0" 
+              frameborder="0" allow="autoplay"></iframe>
+          `;
+        });
+      });
+    </script>
   </head>
   <body>
     <section class="header">
       <div class="header__wrapper">
-        <h3 class="question">Happy Birthday Miss.Thandar Oh**Little Angel**&#129402;<br>
-          I've made something special for you.💐<br>
-          This gift is very precious to me, but it may be something you don't realize.<br>
-          💌I hope you will accept this gift.💌<br>
+        <h3 class="question">
+          Happy Birthday Miss.Thandar Oh**Little Angel**&#129402;<br />
+          I've made something special for you.💐<br />
+          This gift is very precious to me, but it may be something you don't realize.<br />
+          💌I hope you will accept this gift.💌<br />
           Do you want to know that?
         </h3>
-        <img 
-          class="gif" 
+        <img
+          class="gif"
           src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGpkbWZ1Njl4ZXJ2YmJnYmE5NnJiMjd5dnZkdW1mOXltbzdwNm43ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ok3mfHbhzFVQWca9Rt/giphy.gif"
         />
         <img
@@ -29,6 +43,7 @@
           <button class="yes__btn">Yes</button>
           <button class="no__btn">No</button>
         </div>
+        <div id="audio-container"></div>
       </div>
     </section>
   </body>
