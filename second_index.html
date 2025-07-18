@@ -1,210 +1,226 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero King</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero King</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:300,400,500,700,900&display=swap');
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fbe0e7;
+      overflow: hidden;
+      position: relative;
+    }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #fbe0e7;
-            overflow: hidden;
-        }
+    section {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
 
-        .card {
-            position: relative;
-            width: 300px;
-            height: 400px;
-            background: #fff;
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
-            transition: 1s;
-        }
+    span {
+      position: absolute;
+      pointer-events: none;
+      background: #f00;
+      animation: animate 5s linear infinite;
+      border-radius: 50%;
+    }
 
-        .card:hover {
-            transform: translateX(50px); /* 🔧 PC view ရှင်းသွားအောင် 50px သတ်မှတ် */
-        }
+    @keyframes animate {
+      0% {
+        transform: scale(0) translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) translateY(-500%) rotate(360deg);
+        opacity: 0;
+      }
+    }
 
-        .imgBox {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            transform-origin: left;
-            transform-style: preserve-3d;
-            background: #000;
-            transition: 1s;
-            box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
-        }
+    .click {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.6rem;
+      font-family: 'Dancing Script', cursive;
+      color: #e21212;
+      text-shadow: 1px 1px 2px #fff, 2px 2px 8px #e21212;
+      background: #fff0f5;
+      padding: 8px 16px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(226, 18, 18, 0.3);
+      animation: fadeIn 2s ease-in-out;
+      z-index: 10;
+    }
 
-        .card:hover .imgBox {
-            transform: rotateY(-180deg);
-        }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
 
-        .imgBox img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            backface-visibility: hidden;
-        }
+    .card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background: #fff;
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+      box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
+      transition: 1s;
+    }
 
-        .imgBox img:nth-child(2) {
-            transform: rotateY(180deg);
-        }
+    .card:hover {
+      transform: translateX(50px);
+    }
 
-        .details {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #e9cdd0;
-            backface-visibility: hidden;
-        }
+    .imgBox {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transform-origin: left;
+      transform-style: preserve-3d;
+      background: #000;
+      transition: 1s;
+      box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
+    }
 
-        .details .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+    .card:hover .imgBox {
+      transform: rotateY(-180deg);
+    }
 
-        .details .content h4 {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            text-align: center;
-            line-height: 1.5em;
-        }
+    .imgBox img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      backface-visibility: hidden;
+    }
 
-        .click {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 1rem;
-            color: #fff;
-            z-index: 2;
-            text-shadow: 1px 1px 2px #000;
-        }
+    .imgBox img:nth-child(2) {
+      transform: rotateY(180deg);
+    }
 
-        /* 🔧 Responsive Fix */
-        @media screen and (max-width: 768px) {
-            .card {
-                width: 90vw;
-                height: 60vh;
-            }
+    .details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #e9cdd0;
+      backface-visibility: hidden;
+    }
 
-            .details .content h4 {
-                font-size: 0.9rem;
-            }
+    .details .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-            .click {
-                font-size: 0.8rem;
-                top: 5px;
-                left: 5px;
-            }
-        }
+    .details .content h4 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-align: center;
+      line-height: 1.5em;
+      font-size: 1rem;
+    }
 
-        /* Animation Bubble Background */
-        section {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
+    @media screen and (max-width: 768px) {
+      .card {
+        width: 90vw;
+        height: 60vh;
+      }
 
-        span {
-            position: absolute;
-            pointer-events: none;
-            background: #f00;
-            animation: animate 5s linear infinite;
-            border-radius: 50%;
-        }
+      .details .content h4 {
+        font-size: 0.9rem;
+      }
 
-        @keyframes animate {
-            0% {
-                transform: scale(0) translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(1) translateY(-500%) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
+      .click {
+        font-size: 1.2rem;
+        top: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<section></section>
+  <section></section>
 
-<div class="card">
+  <h1 class="click">Pls: Click IMG 💘</h1>
+
+  <div class="card">
     <div class="imgBox">
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-        <h1 class="click">Pls: Click IMG</h1>
+      <img src="img1.jpg" alt="Front Image">
+      <img src="img2.jpg" alt="Back Image">
     </div>
-    <div class="details">
-        <div class="content">
-            <h4>
-                I Love You "Thandar"💖.<br><br>
-                You’re my favorite reason to smile.<br><br>
-                Place your trust in me, I won’t fail.<br><br>
-                If there’s a space in your heart, <br><br>
-                let me in .....💝<br><br>
-                I promise to hold it with care.
-            </h4>
-        </div>
-    </div>
-</div>
 
-<script>
+    <div class="details">
+      <div class="content">
+        <h4>
+          I Love You "Thandar" 💖.<br><br>
+          You’re my favorite reason to smile.<br><br>
+          Place your trust in me, I won’t fail.<br><br>
+          If there’s a space in your heart,<br><br>
+          let me in ..... 💝<br><br>
+          I promise to hold it with care.
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <script>
     const colors = ['#C51943', '#FBD1C3', '#F5B0C5', '#E38097'];
 
     function createSquare() {
-        const section = document.querySelector('section');
-        const square = document.createElement('span');
-        let size = Math.random() * 10;
-        square.style.width = 20 + size + 'px';
-        square.style.height = 20 + size + 'px';
-        square.style.top = Math.random() * window.innerHeight + 'px';
-        square.style.left = Math.random() * window.innerWidth + 'px';
-        square.style.background = colors[Math.floor(Math.random() * colors.length)];
-        section.appendChild(square);
-        setTimeout(() => {
-            square.remove();
-        }, 5000);
+      const section = document.querySelector('section');
+      const square = document.createElement('span');
+      let size = Math.random() * 10;
+      square.style.width = 20 + size + 'px';
+      square.style.height = 20 + size + 'px';
+      square.style.top = Math.random() * window.innerHeight + 'px';
+      square.style.left = Math.random() * window.innerWidth + 'px';
+      square.style.background = colors[Math.floor(Math.random() * colors.length)];
+      section.appendChild(square);
+      setTimeout(() => {
+        square.remove();
+      }, 5000);
     }
 
     setInterval(createSquare, 150);
-</script>
+  </script>
 </body>
 </html>
